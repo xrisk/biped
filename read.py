@@ -6,13 +6,6 @@ import sys
 conn = dxl2.Connection("/dev/tty.usbserial-FT1SF3Q6")
 conn.open_port()
 
-motions = []
-with open("motion.txt") as f:
-    for line in f:
-        motions.append([int(x) for x in line.split()])
-
-print(motions)
-
 motors = [dxl2.Motor(conn, i, dxl2.MotorType.AX) for i in range(1, 11)]
 chain = dxl2.MotorChain(conn, motors)
 
